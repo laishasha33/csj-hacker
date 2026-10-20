@@ -40,7 +40,7 @@ tr.up td{animation:flash 1.2s}
   <div class="bar"><button data-c="3A">3A</button><button data-c="3B">3B</button><button data-c="3C">3C</button><button data-c="TEST">TEST</button>
     <button id="fin">🏆 公布最終排名</button></div>
   <table id="tb"></table>
-  <div class="msg" id="msg">選擇班別。每 10 秒自動更新；只計算今日的最高分。</div>
+  <div class="msg" id="msg">選擇班別。每 10 秒自動更新；永久紀錄，每人只計最高分。</div>
 </main>
 <script src="config.js"></script>
 <script>
@@ -61,7 +61,7 @@ async function load() {
         <td>${esc(x.codename)}</td><td class="dn">完成 ${x.done} 關</td><td class="sc">${x.score}</td></tr>`;
     }).join("");
     prev = Object.fromEntries(rows.map((x, i) => [x.codename, i]));
-    document.getElementById("msg").textContent = rows.length ? `${cls} · 更新時間 ${new Date().toLocaleTimeString("zh-HK")}` : `${cls} 今日還沒有成績。`;
+    document.getElementById("msg").textContent = rows.length ? `${cls} · 更新時間 ${new Date().toLocaleTimeString("zh-HK")}` : `${cls} 還沒有成績。`;
   } catch (e) { document.getElementById("msg").textContent = "暫時讀取不到成績，稍後自動再試。"; }
 }
 document.querySelectorAll("[data-c]").forEach(b => b.onclick = () => {
